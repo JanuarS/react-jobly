@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "";  // empty string is proxy from package.json
 
 /** API Class.
  *
@@ -35,6 +35,13 @@ class JoblyApi {
   }
 
   // Individual API routes
+
+  /** Get companies (filtered by name if not undefined) */
+
+  static async getCompanies(name) {
+    let res = await this.request("companies", { name });
+    return res.companies;
+  }
 
   /** Get details on a company by handle. */
 
