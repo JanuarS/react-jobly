@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import CompanyCard from "../../components/CompanyCard";
 import axios from "axios";
 
 import JoblyApi from "../../api";
@@ -32,14 +33,28 @@ const Companies = () => {
     setCompanies(res.companies)
   }  
 
+  // return (
+  //   <div className="Homepage">
+  //     {companies.map(company => {
+  //       return <div key={company.handle}>
+  //         <p>{company.name}</p>
+  //       </div>
+        
+  //     })}
+  //   </div>
+  // )
+
   return (
     <div className="Homepage">
-      {companies.map(company => {
-        return <div key={company.handle}>
-          <p>{company.name}</p>
-        </div>
-        
-      })}
+      {companies.map(company => ( 
+        <CompanyCard
+            key={company.handle}
+            handle={company.handle}
+            name={company.name}
+            description={company.description}
+            logoUrl={company.logoUrl}
+        />
+      ))}
     </div>
   )
 }
