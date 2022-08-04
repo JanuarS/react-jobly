@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import CompanyCard from "../../components/CompanyCard";
+import SearchForm from "../../components/SearchForm";
 import axios from "axios";
 
 import JoblyApi from "../../api";
@@ -8,6 +9,7 @@ import "./style.css";
 
 const Companies = () => {
   const [companies, setCompanies] = useState([]);
+
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
   // axios.get('http://localhost:3001/companies')
@@ -24,6 +26,7 @@ const Companies = () => {
   // });
 
   loadApi();
+  search();
 
   }, []);
 
@@ -33,19 +36,14 @@ const Companies = () => {
     setCompanies(res.companies)
   }  
 
-  // return (
-  //   <div className="Homepage">
-  //     {companies.map(company => {
-  //       return <div key={company.handle}>
-  //         <p>{company.name}</p>
-  //       </div>
-        
-  //     })}
-  //   </div>
-  // )
+  async function search(name) {
+    let companies = await JoblyApi.getCompanies(name);
+    setCompanies(companies);
+  }
 
   return (
-    <div className="Homepage">
+    <div className="CompanyList">
+      <SearchForm searchFor={search} />
       {companies.map(company => ( 
         <CompanyCard
             key={company.handle}
