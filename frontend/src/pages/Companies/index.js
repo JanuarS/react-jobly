@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CompanyCard from "../../components/CompanyCard";
 import SearchForm from "../../components/SearchForm";
-import axios from "axios";
+// import axios from "axios";
 
 import JoblyApi from "../../api";
 
@@ -43,7 +43,7 @@ const Companies = () => {
 
   return (
     <div className="CompanyList">
-      <SearchForm searchFor={search} />
+      <SearchForm loadApi={loadApi} searchFor={search} />
       {companies.map(company => ( 
         <CompanyCard
             key={company.handle}

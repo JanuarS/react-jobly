@@ -1,14 +1,20 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import UserContext from "../../auth/UserContext";
 
 import "./style.css";
 
-function NavBar({ }) {
+function NavBar() {
+  const { currentUser } = useContext(UserContext);
 
   return (
-    <nav className="">
-      <h1>Navbar</h1>
+    <nav className="Navigation navbar navbar-expand-md">
+      <Link className="navbar-brand" to="/">
+        Jobly
+      </Link>
+      <Link to="/companies">
+        Companies
+      </Link>
     </nav>
   );
 }

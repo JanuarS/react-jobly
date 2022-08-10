@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 
-function SearchForm({ searchFor }) {
+function SearchForm({ loadApi, searchFor }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   function handleSubmit(evt) {
@@ -11,6 +11,9 @@ function SearchForm({ searchFor }) {
   }
 
   function handleChange(evt) {
+    if(!evt.target.value) {
+      loadApi();
+    }
     setSearchTerm(evt.target.value);
   }
 
