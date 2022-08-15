@@ -13,14 +13,10 @@ function CompanyDetails() {
     async function getCompany() {
       let company = await JoblyApi.getCompany(handle);
       setCompany(company);
-      // console.debug(company.jobs);
-      let jobs = company.jobs;
-      console.debug(jobs);
     }
     
     getCompany();
-  }, [handle]);
-
+  }, []);
 
   return (
     <div className="CompanyDetail col-md-8 offset-md-2">
