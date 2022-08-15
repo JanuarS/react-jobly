@@ -2,6 +2,7 @@ import React from "react";
 import JobCard from "../../components/JobCard";
 
 function JobCardList({ jobs, apply }) {
+  console.debug("JobCardList", "jobs=", jobs);
 
   return (
       <div className="JobCardList">
