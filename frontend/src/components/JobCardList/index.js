@@ -6,7 +6,7 @@ function JobCardList({ jobs, apply }) {
 
   return (
       <div className="JobCardList">
-        {jobs.map(job => (
+        {jobs ? jobs.map(job => (
             <JobCard
                 key={job.id}
                 id={job.id}
@@ -15,7 +15,7 @@ function JobCardList({ jobs, apply }) {
                 equity={job.equity}
                 companyName={job.companyName}
             />
-        ))}
+        )) : ""}
       </div>
   );
 }
